@@ -3,7 +3,7 @@ from .models import News, Speaker
 
 
 class NewsAdmin(admin.ModelAdmin):
-    list_display = ['title', 'description', 'image', 'date', 'alt']
+    list_display = ['title', 'description', 'image', 'is_hidden', 'date', 'alt']
     list_filter = ['date']
 
 

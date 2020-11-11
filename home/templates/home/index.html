@@ -9,13 +9,12 @@
 <body>
 <div>
     {% for post in news %}
-        <div>
+        {% if post.is_hidden %}
             <h1>{{post.title}}</h1>
-            <h2>{{post.description}}</h2>
-            <img src="{{post.image.url}}" alt="{{ post.alt }}">
-            <h4>{{post.date}}</h4>
-        </div>
-
+            <p>{{post.description}}</p>
+            <img src="{{post.image.url}}" alt="{{post.alt}}">
+            <p>{{post.date}}</p>
+        {% endif %}
     {% endfor %}
 
     {% for speaker in speakers %}
