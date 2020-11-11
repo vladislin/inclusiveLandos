@@ -1,3 +1,112 @@
-body {
-    background: blue;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section-title {
+    font-size: 42px;
+    color: #333B50;
+}
+.container {
+    max-width: 1200px;
+}
+
+a {
+    color: white;
+}
+
+/*Speakers*/
+.speakers {
+    padding-top: 80px;
+}
+
+.speakers-cards {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.speakers-cards__item {
+    display: flex;
+    width: 100%;
+    padding-top: 60px;
+    padding-right: 20px;
+}
+
+@media all and (min-width: 37.5em) {
+    .speakers-cards__item {
+        width: calc(100% / 12 * 6 );
+    }
+}
+/* ===== == = === 56.25em (900px) === = == ===== */
+@media all and (min-width: 56.25em) {
+    .speakers-cards__item {
+        width: calc(100% / 16 * 4 );
+    }
+}
+
+.speakers-cards__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0;
+    border-radius: 3px;
+}
+
+.speakers-cards__body p {
+    flex: 1 0;
+    margin: 0;
+    color: #18191C;
+;
+}
+
+.speakers-cards__img {
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+}
+
+.speakers-cards__title {
+    padding-top: 20px;
+}
+.speakers-cards__text {
+    padding-right: 20px;
+}
+.speakers-cards__footer {
+    padding-top: 21px;
+}
+.speakers-social {
+    padding-right: 20px;
+}
+
+
+
+@media (max-width: 768px) {
+    .hero {
+        display: none;
+    }
+    .about {
+        display: none;
+    }
+    .registration {
+        display: none;
+    }
+    .news {
+        display: none;
+    }
+    .registration-img {
+        display: none;
+    }
+    .registration-right {
+        display: none;
+    }
+    .section-title {
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .speakers-cards__item {
+        padding-right: 0;
+    }
 }
