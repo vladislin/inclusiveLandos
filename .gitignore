@@ -1,5 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+.idea
+home/__pycache__/__init__.cpython-37.pyc
 *.py[cod]
 *$py.class
 
