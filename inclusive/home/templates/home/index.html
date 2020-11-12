@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+    <link href="{% static "home/css/style.css" %}" rel="stylesheet">
+</head>
+<body>
+<div>
+    {% for post in news %}
+        {% if post.is_hidden %}
+            <h1>{{post.title}}</h1>
+            <p>{{post.description}}</p>
+            <img src="{{post.image.url}}" alt="{{post.alt}}">
+            <p>{{post.date}}</p>
+        {% endif %}
+    {% endfor %}
+
+    {% for speaker in speakers %}
+    <div>
+        <h1>{{speaker.name}}</h1>
+        <h2>{{speaker.description}}</h2>
+        <img src="{{speaker.image.url}}" alt="{{speaker.alt}}">
+        <a href="{{speaker.fb}}">FB_link</a>
+        <a href="{{speaker.linkedin}}">LINKEDin_link</a>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
