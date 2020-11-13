@@ -8,24 +8,59 @@
 </head>
 <body>
 <div>
-    {% for post in news %}
-        {% if post.is_hidden %}
-            <h1>{{post.title}}</h1>
-            <p>{{post.description}}</p>
-            <img src="{{post.image.url}}" alt="{{post.alt}}">
-            <p>{{post.date}}</p>
-        {% endif %}
-    {% endfor %}
+    {% for section in sections %}
+            {% if section.is_hidden %}
+                {% for post in news %}
+                    <h1>{{post.title}}</h1>
+                    <p>{{post.description}}</p>
+                    <img src="{{post.image.url}}" alt="{{post.alt}}">
+                    <p>{{post.date}}</p>
+                {% endfor %}
 
-    {% for speaker in speakers %}
-    <div>
-        <h1>{{speaker.name}}</h1>
-        <h2>{{speaker.description}}</h2>
-        <img src="{{speaker.image.url}}" alt="{{speaker.alt}}">
-        <a href="{{speaker.fb}}">FB_link</a>
-        <a href="{{speaker.linkedin}}">LINKEDin_link</a>
-    </div>
+                {% for speaker in speakers %}
+                    <div>
+                        <h1>{{speaker.name}}</h1>
+                        <h2>{{speaker.description}}</h2>
+                        <img src="{{speaker.image.url}}" alt="{{speaker.alt}}">
+                        <a href="{{speaker.fb}}">FB_link</a>
+                        <a href="{{speaker.linkedin}}">LINKEDin_link</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
     {% endfor %}
+    <form action="{% url 'inclusive:home' %}" method="POST">
+        {% csrf_token %}
+<!--        {{ feedback_form }}-->
+        <label for="username">
+            <input type="text" id="username" name="username">
+        </label>
+        <label for="description">
+            <input type="text" id="description" name="description">
+        </label>
+        <button type="submit" name="feedback_form">send</button>
+    </form>
+
+    <form action="{% url 'inclusive:home' %}" method="POST">
+        {% csrf_token %}
+<!--        {{ signup_form.as_p }}-->
+        <label for="name">
+            <input type="text" id="name" name="name">
+        </label>
+        <label for="surname">
+            <input type="text" id="surname" name="surname">
+        </label>
+        <label for="phone">
+            <input type="text" id="phone" name="phone">
+        </label>
+        <label for="email">
+            <input type="email" id="email" name="email">
+        </label>
+        <label for="desc">
+            <input type="text" id="desc" name="description">
+        </label>
+        <button type="submit" name="signup_form">send</button>
+    </form>
+
 </div>
 </body>
 </html>

@@ -31,3 +31,39 @@ class Speaker(models.Model):
     class Meta:
         verbose_name = 'Спікер'
         verbose_name_plural = 'Спікери'
+
+    def __str__(self):
+        return self.name
+
+
+class SectionOff(models.Model):
+    section_name = models.CharField(max_length=30, verbose_name="Ім'я секції", null=True)
+    is_hidden = models.BooleanField(verbose_name='Показувати секцію?')
+
+    class Meta:
+        verbose_name = 'Секція'
+        verbose_name_plural = 'Секції'
+
+    def __str__(self):
+        return self.section_name
+
+
+class Feedback(models.Model):
+    username = models.CharField(max_length=60, verbose_name="Ім'я користувача")
+    description = models.CharField(max_length=300, verbose_name="Відгук")
+
+    def __str__(self):
+        return self.username
+
+    class Meta:
+        verbose_name = 'Фідбек'
+        verbose_name_plural = 'Фідбеки'
+
+
+class Singup(models.Model):
+    name = models.CharField(max_length=30, verbose_name="Ім'я")
+    surname = models.CharField(max_length=30, verbose_name="Прізвище")
+    phone = models.CharField(max_length=10, verbose_name="Номер телефону")
+    email = models.EmailField()
+    description = models.CharField(max_length=300, verbose_name="Коментар")
+
