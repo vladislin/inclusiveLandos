@@ -14,287 +14,492 @@
 </head>
 <body>
 <main>
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about__content">
-                <div class="left-side">
-                    <img src="../../static/home/img/about.png" alt="Тут буде опис після надання інформації">
-                </div>
-                <div class="right-side">
-                    <h2 class="section-title title-left">Про подію</h2>
-                    <p class="about-text">IV Міжнародна конференція з інклюзивного розвитку бізнесу «підсумки та перспективи» за підтримки проекту ПРОМІС відбудеться 22-23 грудня онлайн. Цьогорічні виклики змушують шукати нові форми для взаємодії та спілкування навіть для офіційних подій, тому конференція відбудеться на платформі zoom.
-                        </p>
-                    <p class="about-text">
-                        Конференцію буде присвячено питанням інклюзії в бізнесі, соціальному підприємництву та питанням співпраці бізнесу та органів місцевого самоврядування. Ми поспілкуємось про успішні практики соціальних бізнесів та окреслимо перспективи для інклюзії в бізнесі.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="registration" id="registration">
-        <div class="container">
-            <div class="registration-content">
-                <h2 class="section-title" tabindex="0">Зареєструватись</h2>
-                <div class="registration-container">
-                    <div class="registration-left">
-                        <form action="{% url 'inclusive:home' %}" method="POST" enctype="application/x-www-form-urlencoded" class="registration-form">
-                                    {% csrf_token %}
-                            <div class="field-group">
-                                <div class="field">
-                                    <label for="name">Ім’я<input type="text" class="field-input" placeholder="Впишіть ваше ім’я" id="name" name="name"></label>
-                                </div>
-                                <div class="field">
-                                    <label for="surname">Прізвище<input type="text" class="field-input" placeholder="Впишіть ваше прізвище" id="surname" name="surname"></label>
-                                </div>
-                            </div>
-                            <div class="field-group">
-                                <div class="field">
-                                    <label for="phone">Телефон<input class="field-input" placeholder="+38 (095) 34 56 789" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"></label>
-                                </div>
-                                <div class="field">
-                                    <label for="email" lang="en">Email<input class="field-input" placeholder="e.g., john.smith@mymail.com" type="email" id="email" name="email"></label>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label for="desc">Коментар<textarea class="field-textarea" placeholder="Як ми можемо вам допомогти?" id="desc" name="description"></textarea></label>
-                            </div>
-                            <div class="field">
-                                <button type="submit" value="Submit" name="signup_form">Зареєструватись</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="registration-right">
-                        <img src="../../static/home/img/card.png" alt="Тут буде опис після надання інформації">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="news" id="news">
-        <div class="container">
-            <h2 class="section-title title-padding" tabindex="0">Новини</h2>
-            <div class="news-items">
-                {% for post in news %}
-                <div class="news-item">
-                    <div class="news-img">
-                        <img src="{{post.image.url}}" alt="{{post.alt}}">
-                    </div>
-                    <div class="news-content">
-                        <p class="created_at">{{post.date}}</p>
-                        <p lang="en">
-                            {{post.description}}
-                        </p>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-    <section class="program" id="program">
-        <div class="container">
-            <h2 class="section-title title-white title-padding" tabindex="0">Програма</h2>
-            <div class="deque-tabpanel" data-deque-tabpanel-autoselect="true" data-deque-tabpanel-autoplay="false"
-                 id="pour">
-                <ul role="tablist" class="tabpanel-ul">
-                    <li role="tab" aria-controls="day1" class="tabpanel-li">
-                        <span class="schedule__desc-representative"><span class="tabpanel-li-blocked">День 1.</span></span> 22 грудня 2020 року
-                    </li>
-                    <li role="tab" aria-controls="day2" class="tabpanel-li">
-                        <span class="tabpanel-li-blocked">День 2.</span> 23 грудня 2020 року
-                    </li>
-                </ul>
-                <div class="container">
-                    <div class="program__container">
-                        <div class="deque-tabpanel-group">
-                            <div class="program__content" role="tabpanel" id="day1">
-                                <div class="program__title">
-                                    <div class="program__title-time">
-                                        Час
-                                    </div>
-                                    <div class="program__title-desc">
-                                        Назва навчальної сесії, доповідач / модератор
-                                    </div>
-                                </div>
-                                <div class="schedule">
-                                    <div class="schedule__time light-grey">
-                                        9:40 – 10:00
-                                    </div>
-                                    <div class="schedule__desc light-grey">
-                                        Реєстрація учасників. Приєднання до платформи ZOOM
-                                    </div>
-                                </div>
-                                <div class="schedule">
-                                    <div class="schedule__time light-blue">
-                                        10:00 – 10:20
-                                    </div>
-                                    <div class="schedule__desc light-blue">
-                                        <h3 tabindex="0" class="schedule-title">
-                                            Офіційне відкриття. Привітання
-                                        </h3>
-                                        <p class="schedule__desc-text">
-                                            Модераторка: <span
-                                                class="schedule__desc-representative">Валерія Мосієнко</span>, проект
-                                            ПРОМІС
-                                        </p>
-                                        <p class="schedule__desc-text">
-                                            <span class="schedule__desc-representative">Олександр Кучеренко</span>,
-                                            директор Проекту ПРОМІС
-                                        </p>
-                                        <p class="schedule__desc-text">
-                                            <span class="schedule__desc-representative">Представни -к/ -ця</span>
-                                            Посольства Канади
-                                        </p>
-                                        <p class="schedule__desc-text">
-                                            <span class="schedule__desc-representative">Олександр Слобожан</span>,
-                                            виконавчий директор Асоціації міст України
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="schedule">
-                                    <div class="schedule__time light-grey">
-                                        10:20 – 10:35
-                                    </div>
-                                    <div class="schedule__desc light-grey">
-                                        <h3 class="schedule-title" tabindex="0">
-                                            Презентація
-                                        </h3>
-                                        <h3 class="schedule__subtitle" tabindex="0">
-                                            «ПРОМІС. ПІДСУМКИ»
-                                        </h3>
-                                        <p class="schedule__desc-text">
-                                            <span class="schedule__desc-representative">Віталій Бохняк</span>, Головний
-                                            експерт з питань розвитку бізнесу (ПРОМІС)
-                                        </p>
+  <section class="intro" id="intro">
+      <div class="container">
+          <img class="title" src="../../static/home/img/illustration.png" alt="Тут буде опис після надання інформації" />
+          <div class="left-side">
+              <h1 class="section-title">
+                <strong>«Підсумки та перспективи»</strong>
+                <br />
+                <span aria-hidden="true">IV </a><span class="sr-only">Четверта </span>Міжнародна конференція з інклюзивного розвитку бізнесу
+              </h1>
+              <p class="date">22-23 грудня</p>
+              <p class="place">online</p>
+              <p>Конференція з питань інклюзії в бізнесі, соціального підприємництва та співпраці бізнесу та органів місцевого самоврядування.</p>
+              <p class="register"><a target="_blank" class="register" href="https://docs.google.com/forms/d/e/1FAIpQLSfeyRFNtitsFTHPuFY-NsoyKL7rDsIYh5GbWmUMfcynw321vA/viewform">Зареєструватись</a></p>
+          </div>
+      </div>
+  </section>
+  <section class="about" id="about">
+      <div class="container">
+          <div class="about__content">
+              <div class="left-side">
+                  <img src="../../static/home/img/about.png" alt="Тут буде опис після надання інформації" />
+              </div>
+              <div class="right-side">
+                  <h2 class="section-title" tabindex="0">Про подію</h2>
+                  <p class="about-text">IV Міжнародна конференція з інклюзивного розвитку бізнесу «підсумки та перспективи» за підтримки проекту ПРОМІС відбудеться 22-23 грудня онлайн. Цьогорічні виклики змушують шукати нові форми для взаємодії та спілкування навіть для офіційних подій, тому конференція відбудеться на платформі zoom.
+                      Конференцію буде присвячено питанням інклюзії в бізнесі, соціальному підприємництву та питанням співпраці бізнесу та органів місцевого самоврядування. Ми поспілкуємось про успішні практики соціальних бізнесів та окреслимо перспективи для інклюзії в бізнесі.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+  <section class="registration" id="registration">
+      <div class="container">
+          <div class="registration-content">
+              <h2 class="section-title" tabindex="0"><a class="register" href="https://docs.google.com/forms/d/e/1FAIpQLSfeyRFNtitsFTHPuFY-NsoyKL7rDsIYh5GbWmUMfcynw321vA/viewform" style="color:black;font-size:20px;text-decoration:underline">Зареєструватись</a></h2>
+          </div>
+      </div>
+  </section>
+  <section class="program" id="program">
+      <div class="container">
+          <h2 class="section-title title-white" tabindex="0">Програма</h2>
+          <div class="deque-tabpanel" data-deque-tabpanel-autoselect="true" data-deque-tabpanel-autoplay="false"
+               id="schedule-tabs">
+              <ul role="tablist" class="deque-tabpanel-tablist tabpanel-ul">
+                  <li role="tab" aria-controls="day1" class="tabpanel-li">
+                      <span class="schedule__desc-representative">День 1.</span> 22 грудня 2020 року
+                  </li>
+                  <li role="tab" aria-controls="day2" class="tabpanel-li">
+                      День 2. 23 грудня 2020 року
+                  </li>
+              </ul>
+              <div class="container">
+                  <div class="program__container">
+                      <div class="deque-tabpanel-group">
+                          <div class="program__content" role="tabpanel" id="day1"  aria-label="День 1. 22 грудня 2020 року" class="deque-tabpanel-tabpanel">
+                              <div class="program__title">
+                                  <div class="program__title-time">
+                                      Час
+                                  </div>
+                                  <div class="program__title-desc">
+                                      Назва навчальної сесії, доповідач / модератор
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-grey">
+                                      9:40 – 10:00
+                                  </div>
+                                  <div class="schedule__desc light-grey">
+                                      Реєстрація учасників. Приєднання до платформи ZOOM
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-blue">
+                                      10:00 – 10:20
+                                  </div>
+                                  <div class="schedule__desc light-blue">
+                                      <p class="schedule-title">
+                                          Офіційне відкриття. Привітання
+                                      </p>
+                                      <p class="schedule__desc-text">
+                                          Модераторка: <span
+                                              class="schedule__desc-representative">Валерія Мосієнко</span>, проект
+                                          ПРОМІС
+                                      </p>
+                                      <p class="schedule__desc-text">
+                                          <span class="schedule__desc-representative">Олександр Кучеренко</span>,
+                                          директор Проекту ПРОМІС
+                                      </p>
+                                      <p class="schedule__desc-text">
+                                          <span class="schedule__desc-representative">Представни -к/ -ця</span>
+                                          Посольства Канади
+                                      </p>
+                                      <p class="schedule__desc-text">
+                                          <span class="schedule__desc-representative">Олександр Слобожан</span>,
+                                          виконавчий директор Асоціації міст України
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-grey">
+                                      10:20 – 10:35
+                                  </div>
+                                  <div class="schedule__desc light-grey">
+                                      <p class="schedule-title">
+                                          Презентація
+                                      </p>
+                                      <p class="schedule__subtitle">
+                                          «ПРОМІС. ПІДСУМКИ»
+                                      </p>
+                                      <p class="schedule__desc-text">
+                                          <span class="schedule__desc-representative">Віталій Бохняк</span>, Головний
+                                          експерт з питань розвитку бізнесу (ПРОМІС)
+                                      </p>
 
-                                    </div>
-                                </div>
-                                <div class="schedule">
-                                    <div class="schedule__time light-blue">
-                                        10:35 – 10:45
-                                    </div>
-                                    <div class="schedule__desc light-blue">
-                                        <h3 class="schedule-title" tabindex="0">
-                                            Презентація
-                                        </h3>
-                                        <p class="schedule__desc-text">
-                                            «Re.Презентація історій партнерів ПРОМІС від проекту ШО ТАМ»
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-blue">
+                                      10:35 – 10:45
+                                  </div>
+                                  <div class="schedule__desc light-blue">
+                                      <p class="schedule-title">
+                                          Презентація
+                                      </p>
+                                      <p class="schedule__desc-text">
+                                          «Re.Презентація історій партнерів ПРОМІС від проекту ШО ТАМ»
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-grey">
+                                      10:45 – 11:55
+                                  </div>
+                                  <!--           Problem with multiple desc                 -->
+                                  <div class="schedule__wrapper">
+                                      <div class="schedule__wrapped-desc light-grey">
+                                          <p class="schedule-title">
+                                              Сесія 1. «Інклюзивність – стандарт суспільних цінностей».
+                                          </p>
+                                          <p class="schedule__desc-text">
+                                              Модераторка:<span
+                                                  class="schedule__desc-representative">Валерія Мосієнко</span> ,
+                                              проект ПРОМІС
+                                          </p>
+                                      </div>
+                                      <div class="schedule__wrapped-desc light-blue">
+                                        <p class="schedule-title">
+                                            Історія успіху
                                         </p>
+                                          <p>
+                                              ГО «Асоціація захисту прав та допомоги людям з інвалідністю «Відкриті
+                                              серця» (Вінниця)
+                                          </p>
+                                          <p class="schedule__desc-text">
+                                              <span class="schedule__desc-representative">Світлана Демко</span>,
+                                              голова Ради Асоціації «Відкриті серця»
+                                          </p>
+                                      </div>
+                                      <div class="schedule__wrapped-desc light-grey">
+                                        <p class="schedule-title">
+                                            Історія успіху
+                                        </p>
+                                          <p>
+                                              ГО «Саме час» (Коломия)
+                                          </p>
+                                          <p class="schedule__desc-text">
+                                              <span class="schedule__desc-representative">Олександра Бабкевич</span>,
+                                              Голова ГО «Саме час»
+                                          </p>
+                                      </div>
+                                      <div class="schedule__wrapped-desc light-blue">
+                                        <p class="schedule-title">
+                                            Історія успіху
+                                        </p>
+                                          <p>
+                                              Благодійної організації «Благодійний фонд «Все можливо» (Мелітополь)
+                                          </p>
+                                          <p class="schedule__desc-text">
+                                              <span class="schedule__desc-representative">Олена Овсянікова</span>,
+                                              Директорка БО «БФ «Все можливо»
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-blue">
+                                      11:50 – 12:10
+                                  </div>
+                                  <div class="schedule__desc light-blue">
+                                      <p class="schedule-title">
+                                          Перерва
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-grey">
+                                      12:10 – 13:10
+                                  </div>
+                                  <!--           Problem with multiple desc                 -->
+                                  <div class="schedule__wrapper">
+                                    <div class="schedule__wrapped-desc light-grey">
+                                      <p class="schedule-title">
+                                          Сесія 2. Місцеве самоврядування як рушій розвитку інклюзивного та соціального бізнесу.
+                                      </p>
+                                      <p>
+                                        Модератори: <span class="schedule__desc-representative">Ігор Ліпьошкін</span>, Валерія Мосієнко, проект ПРОМІС
+                                      </p>
+                                  </div>
+                                      <div class="schedule__wrapped-desc light-blue">
+                                        <p class="schedule-title">
+                                            Презентація
+                                        </p>
+                                        <p class="schedule__subtitle">
+                                          Підсумки дослідження «Експрес-аналіз місцевого бізнес клімату міст Вінницької, Запорізької,
+Івано-Франківської та Полтавської областей»
+                                        </p>
+                                        <p class="schedule__desc-text">
+                                            <span class="schedule__desc-representative">Богдан Мосунов</span>,
+                                            <span class="schedule__desc-representative">Ольга Демченкова</span>, консультанти проекту ПРОМІС
+                                        </p>
+                                      </div>
+                                      <div class="schedule__wrapped-desc light-grey">
+                                        <p class="schedule-title">
+                                            Презентація
+                                        </p>
+                                        <p>
+                                          Досвід Канади у розвитку інклюзивного та соціального бізнесу
+                                        </p>
+                                        <p class="schedule__subtitle">
+                                          "Місцеве самоврядування як рушій для розвитку інклюзивного та соціального бізнесу"
+                                        </p>
+                                        <p class="schedule__desc-text">
+                                          <span class="schedule__desc-representative">Рафаель Коста</span>, Acting Director, Economic and Cultural Development, (Вон, Канада)
+                                        </p>
+                                      </div>
+                                      <div class="schedule__wrapped-desc light-blue">
+                                        <p class="schedule-title">
+                                            Презентація
+                                        </p>
+                                        <p class="schedule__subtitle">
+                                          Популяризація культури підприємництва, покращення бізнес-клімату на прикладі Вінницької
+міської територіальної громади Консультант ПРОМІС
+                                        </p>
+                                        <p class="schedule__desc-text">
+                                          <span class="schedule__desc-representative">Ірина Черната</span>, Заступниця директора Департаменту економіки та інвестицій Вінницької
+міської ради (попередньо)
+                                        </p>
+                                      </div>
+                                      <div class="schedule__wrapped-desc light-grey">
+                                        <p class="schedule-title">
+                                            Презентація
+                                        </p>
+                                        <p class="schedule__subtitle">
+                                          «Навіщо Івано-Франківську програма підтримки соціального підприємництва?»
+                                        </p>
+                                        <p class="schedule__desc-text">
+                                          <span class="schedule__desc-representative">Оксана Думич</span>, Заступниця начальника відділу промисловості та розвитку підприємництва
+                                        </p>
+                                      </div>
                                     </div>
-                                </div>
-                                <div class="schedule">
-                                    <div class="schedule__time light-grey">
-                                        10:45 – 11:55
-                                    </div>
-                                    <!--           Problem with multiple desc                 -->
-                                    <div class="schedule__wrapper">
-                                        <div class="schedule__wrapped-desc light-grey">
-                                            <h3 class="schedule-title" tabindex="0">
-                                                Сесія 1. «Інклюзивність – стандарт суспільних цінностей».
-                                            </h3>
-                                            <p class="schedule__desc-text">
-                                                Модераторка:<span
-                                                    class="schedule__desc-representative">Валерія Мосієнко</span> ,
-                                                проект ПРОМІС
-                                            </p>
-                                        </div>
-                                        <div class="schedule__wrapped-desc light-blue">
-                                            <h3 class="schedule-title" tabindex="0">
-                                                ГО «Асоціація захисту прав та допомоги людям з інвалідністю «Відкриті
-                                                серця» (Вінниця)
-                                            </h3>
-                                            <p class="schedule__desc-text">
-                                                <span class="schedule__desc-representative">Світлана Демко</span>,
-                                                голова Ради Асоціації «Відкриті серця»
-                                            </p>
-                                        </div>
-                                        <div class="schedule__wrapped-desc light-grey">
-                                            <h3 class="schedule-title" tabindex="0">
-                                                Сесія 1. «Інклюзивність – стандарт суспільних цінностей».
-                                            </h3>
-                                            <p class="schedule__desc-text">
-                                                Модераторка:<span
-                                                    class="schedule__desc-representative">Валерія Мосієнко</span> ,
-                                                проект ПРОМІС
-                                            </p>
-                                        </div>
-                                        <div class="schedule__wrapped-desc light-blue">
-                                            <h3 class="schedule-title" tabindex="0">
-                                                ГО «Асоціація захисту прав та допомоги людям з інвалідністю «Відкриті
-                                                серця» (Вінниця)
-                                            </h3>
-                                            <p class="schedule__desc-text">
-                                                <span class="schedule__desc-representative">Світлана Демко</span>,
-                                                голова Ради Асоціації «Відкриті серця»
-                                            </p>
-                                        </div>
-                                        <div class="schedule__wrapped-desc light-grey">
-                                            <h3 class="schedule-title" tabindex="0">
-                                                Сесія 1. «Інклюзивність – стандарт суспільних цінностей».
-                                            </h3>
-                                            <p class="schedule__desc-text">
-                                                Модераторка:<span
-                                                    class="schedule__desc-representative">Валерія Мосієнко</span> ,
-                                                проект ПРОМІС
-                                            </p>
-                                        </div>
-                                        <div class="schedule__wrapped-desc light-blue">
-                                            <h3 class="schedule-title" tabindex="0">
-                                                ГО «Асоціація захисту прав та допомоги людям з інвалідністю «Відкриті
-                                                серця» (Вінниця)
-                                            </h3>
-                                            <p class="schedule__desc-text">
-                                                <span class="schedule__desc-representative">Світлана Демко</span>,
-                                                голова Ради Асоціації «Відкриті серця»
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="schedule">
-                                    <div class="schedule__time light-blue">
-                                        11:50 – 12:10
-                                    </div>
-                                    <div class="schedule__desc light-blue">
-                                        <h3 class="schedule-title" tabindex="0">
-                                            Перерва
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="program__content" role="tabpanel" id="day2">
-                                <div class="program__title">
-                                    <div class="program__title-time">
-                                        Час
-                                    </div>
-                                    <div class="program__title-desc">
-                                        Назва навчальної сесії, доповідач / модератор
-                                    </div>
-                                </div>
-                                <div class="schedule">
-                                    <div class="schedule__time light-grey">
-                                        9:40 – 10:00
-                                    </div>
-                                    <div class="schedule__desc light-grey">
-                                        Реєстрація учасників. Приєднання до платформи ZOOM
-                                    </div>
-                                </div>
-                                <div class="schedule">
-                                    <div class="schedule__time light-blue">
-                                        11:50 – 12:10
-                                    </div>
-                                    <div class="schedule__desc light-blue">
-                                        <h3 class="schedule-title" tabindex="0">
-                                            Перерва
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                  </div>
+                                  <div class="schedule">
+                                      <div class="schedule__time light-blue">
+                                          13:10 – 13:30
+                                      </div>
+                                      <div class="schedule__desc light-blue">
+                                          <p class="schedule-title">
+                                              Майстер клас
+                                          </p>
+                                          <p class="schedule__desc-text">
+                                              «Музей в темряві «Третя після опівночі»
+                                          </p>
+                                          <p>
+                                            <span class="schedule__desc-representative">Аліна Марненко</span>, співзасновниця музею
+                                          </p>
+                                      </div>
+                                  </div>
+                                  <div class="schedule">
+                                      <div class="schedule__time light-grey">
+                                          13:30 – 13:50
+                                      </div>
+                                      <div class="schedule__desc light-grey">
+                                          <p class="schedule-title">
+                                              Відкрита дискусія
+                                          </p>
+                                          <p class="schedule__desc-text">
+                                              Що робить соціальні підприємства успішними?
+                                          </p>
+                                          <p>
+                                            Модераторка: <span class="schedule__desc-representative">Аліна Бочарнікова,</span>, експертка з розвитку соціального підприємництва
+                                          </p>
+                                      </div>
+                                  </div>
+                                  <div class="schedule">
+                                      <div class="schedule__time light-blue">
+                                          13:50 – 14:00
+                                      </div>
+                                      <div class="schedule__desc light-blue">
+                                          <p class="schedule-title">
+                                              Підсумки дня. Анонс наступного дня
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="program__content" role="tabpanel" id="day2">
+                              <div class="program__title">
+                                  <div class="program__title-time">
+                                      Час
+                                  </div>
+                                  <div class="program__title-desc">
+                                      Назва навчальної сесії, доповідач / модератор
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-grey">
+                                      9:40 – 10:00
+                                  </div>
+                                  <div class="schedule__desc light-grey">
+                                      Реєстрація учасників. Приєднання до платформи ZOOM
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-blue">
+                                      10:00 – 10:10
+                                  </div>
+                                  <div class="schedule__desc light-blue">
+                                      <p class="schedule-title">
+                                          Огляд попереднього дня
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-grey">
+                                      10:45 – 11:55
+                                  </div>
+                                  <!--           Problem with multiple desc                 -->
+                                  <div class="schedule__wrapper">
+                                      <div class="schedule__wrapped-desc light-grey">
+                                          <p class="schedule-title">
+                                              Сесія 3. «Жіноче підприємництво як складова економічного розвитку»
+                                          </p>
+                                          <p class="schedule__desc-text">
+                                              Модераторка:<span
+                                                  class="schedule__desc-representative">Світлана Ходакова</span> ,
+                                              консультантка з гендерних питань проекту ПРОМІС
+                                          </p>
+                                      </div>
+                                      <div class="schedule__wrapped-desc light-blue">
+                                        <p class="schedule-title">
+                                            Презентація
+                                        </p>
+                                          <p>
+                                              Re.Презентація онлайн курсу з жіночого підприємництва
+                                          </p>
+                                          <p class="schedule__desc-text">
+                                              <span class="schedule__desc-representative">Світлана Жаворонкова</span>,
+                                              консультантка з гендерних питань проекту ПРОМІС
+                                          </p>
+                                      </div>
+                                      <div class="schedule__wrapped-desc light-grey">
+                                        <p class="schedule-title">
+                                            Презентація
+                                        </p>
+                                          <p>
+                                              Як бізнес асоціації сприяють розвитку жіночого бізнесу?
+                                          </p>
+                                          <p class="schedule__desc-text">
+                                              <span class="schedule__desc-representative">Надія Лисецька</span>,
+                                              президентка ГО «Вінницький клуб ділових людей»
+                                          </p>
+                                      </div>
+                                      <div class="schedule__wrapped-desc light-blue">
+                                        <p class="schedule-title">
+                                            Презентація
+                                        </p>
+                                          <p>
+                                            B2B Creative Woman Network: нетворкінг задля посилення спроможності жінок у креативних
+індустріях Івано-Франківська
+                                          </p>
+                                          <p class="schedule__desc-text">
+                                              <span class="schedule__desc-representative">Лада Маланій</span>,
+                                              керівниця проєкту Акселератор креативних жіночих стартапів, експертка
+Туристичної Асоціації Івано-Франківщини
+                                          </p>
+                                      </div>
+                                      <div class="schedule__wrapped-desc light-grey">
+                                        <p class="schedule-title">
+                                            Обговорення:
+                                        </p>
+                                          <p>
+                                            «Розвиток жіночого підприємництва – виклики в маленьких містах»
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-blue">
+                                      11:40 – 12:00
+                                  </div>
+                                  <div class="schedule__desc light-blue">
+                                      <p class="schedule-title">
+                                          Перерва
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-grey">
+                                      12:00 – 12:20
+                                  </div>
+                                  <div class="schedule__desc light-grey">
+                                      <p class="schedule-title">
+                                          Майстер клас
+                                      </p>
+                                      <p>
+                                        «Мотивація в умовах перманентної кризи»
+                                      </p>
+                                      <p>
+                                        <span class="schedule__desc-representative">Влад Малащенко</span>, засновник соціальної пекарні Good Bread from Good People (Київ)
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-grey">
+                                      12:20 – 13:50
+                                  </div>
+                                  <!--           Problem with multiple desc                 -->
+                                  <div class="schedule__wrapper">
+                                      <div class="schedule__wrapped-desc light-grey">
+                                          <p class="schedule-title">
+                                              Сесія 4. Дискусія: «Бізнес та інклюзивність: загрози та можливості в умовах кризи»
+                                          </p>
+                                          <p class="schedule__desc-text">
+                                              Модератор:<span
+                                                  class="schedule__desc-representative">Віталій Бохняк</span> ,
+                                              проект ПРОМІС
+                                          </p>
+                                      </div>
+                                      <div class="schedule__wrapped-desc light-blue">
+                                        <p class="schedule-title">
+                                            Учасники
+                                        </p>
+                                          <p>
+                                            <span class="schedule__desc-representative">Лора Хагг</span>, Радниця проекту ПРОМІС
+                                          </p>
+                                          <p>
+                                            <span class="schedule__desc-representative">Роман Дрозд</span>, Громадська спілка «Соціальне підприємство «Навчально виробничий центр»
+(Полтава)
+                                          </p>
+                                            <span class="schedule__desc-representative">Влад Малащенко</span>, Good Bread For Good People (Київ)
+                                          </p>
+                                          <p>
+                                            <span class="schedule__desc-representative">Олена Овсянікова</span>, Директор БО «БФ «Все можливо» (Мелітополь)
+                                          </p>
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-blue">
+                                      11:40 – 12:00
+                                  </div>
+                                  <div class="schedule__desc light-blue">
+                                      <p class="schedule-title">
+                                          Перерва
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="schedule">
+                                  <div class="schedule__time light-grey">
+                                      13:50 – 14:00
+                                  </div>
+                                  <div class="schedule__desc light-grey">
+                                      <p class="schedule-title">
+                                          Підсумки
+                                      </p>
+                                  </div>
+                              </div>
 
-            </div>
-        </div>
-    </section>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </section>
   {% if speaker_section.is_hidden %}
     <section class="speakers" id="speakers">
         <div class="container">
