@@ -1,13 +1,13 @@
 from django.contrib import admin
-from .models import News, Speaker, SectionOff, Feedback, Singup
+from .models import News, Speaker, Section, Feedback, Singup, Recipient
 
 
-class NewsAdmin(admin.ModelAdmin):
-    list_display = ['title', 'description', 'image', 'is_hidden', 'date', 'alt']
-    list_filter = ['date']
-
-
-admin.site.register(News, NewsAdmin)
+# class NewsAdmin(admin.ModelAdmin):
+#     list_display = ['title', 'description', 'image', 'is_hidden', 'date', 'alt']
+#     list_filter = ['date']
+#
+#
+# admin.site.register(News, NewsAdmin)
 
 
 class SpeakerAdmin(admin.ModelAdmin):
@@ -18,11 +18,11 @@ class SpeakerAdmin(admin.ModelAdmin):
 admin.site.register(Speaker, SpeakerAdmin)
 
 
-class SectionOffAdmin(admin.ModelAdmin):
-    list_display = ['section_name', 'is_hidden']
+class SectionAdmin(admin.ModelAdmin):
+    list_display = ['section_name', 'is_hidden', 'id']
 
 
-admin.site.register(SectionOff, SectionOffAdmin)
+admin.site.register(Section, SectionAdmin)
 
 
 class FeedbackAdmin(admin.ModelAdmin):
@@ -35,11 +35,17 @@ class FeedbackAdmin(admin.ModelAdmin):
 admin.site.register(Feedback, FeedbackAdmin)
 
 
-class SingupAdmin(admin.ModelAdmin):
-    list_display = ['name', 'surname', 'phone', 'email', 'description']
-
-    class Meta:
-        model = Singup
+class RecipientAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email']
 
 
-admin.site.register(Singup, SingupAdmin)
+admin.site.register(Recipient, RecipientAdmin)
+
+# class SingupAdmin(admin.ModelAdmin):
+#     list_display = ['name', 'surname', 'phone', 'email', 'description']
+#
+#     class Meta:
+#         model = Singup
+#
+#
+# admin.site.register(Singup, SingupAdmin)

@@ -21,8 +21,8 @@ class News(models.Model):
 
 
 class Speaker(models.Model):
-    name = models.CharField(max_length=60, verbose_name="Прізвище та ім'я")
-    description = models.CharField(max_length=300, verbose_name="Короткий текст")
+    name = models.CharField(max_length=100, verbose_name="Прізвище та ім'я")
+    description = models.CharField(max_length=500, verbose_name="Короткий текст")
     fb = models.CharField(max_length=150, verbose_name="Фб-профіль посилання")
     linkedin = models.CharField(max_length=150, verbose_name="Linkedin-профіль посилання")
     alt = models.CharField(max_length=300, verbose_name='Alt текст')
@@ -36,7 +36,7 @@ class Speaker(models.Model):
         return self.name
 
 
-class SectionOff(models.Model):
+class Section(models.Model):
     section_name = models.CharField(max_length=30, verbose_name="Ім'я секції", null=True)
     is_hidden = models.BooleanField(verbose_name='Показувати секцію?')
 
@@ -49,8 +49,8 @@ class SectionOff(models.Model):
 
 
 class Feedback(models.Model):
-    username = models.CharField(max_length=60, verbose_name="Ім'я користувача")
-    description = models.CharField(max_length=300, verbose_name="Відгук")
+    username = models.CharField(max_length=100, verbose_name="Ім'я користувача")
+    description = models.CharField(max_length=500, verbose_name="Відгук")
 
     def __str__(self):
         return self.username
@@ -61,9 +61,27 @@ class Feedback(models.Model):
 
 
 class Singup(models.Model):
-    name = models.CharField(max_length=30, verbose_name="Ім'я")
-    surname = models.CharField(max_length=30, verbose_name="Прізвище")
-    phone = models.CharField(max_length=10, verbose_name="Номер телефону")
+    name = models.CharField(max_length=100, verbose_name="Ім'я")
+    surname = models.CharField(max_length=100, verbose_name="Прізвище")
+    phone = models.CharField(max_length=12, verbose_name="Номер телефону")
     email = models.EmailField()
-    description = models.CharField(max_length=300, verbose_name="Коментар")
+    description = models.CharField(max_length=500, verbose_name="Коментар")
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Реєстрація'
+        verbose_name_plural = 'Реєстрації'
+
+
+class Recipient(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Ім'я")
+    email = models.EmailField(verbose_name='Email користувача', null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Отримувач'
+        verbose_name_plural = 'Отримувачі'
