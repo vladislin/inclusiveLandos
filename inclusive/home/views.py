@@ -34,7 +34,7 @@ def home(request):
     news = News.objects.all()
     speakers = Speaker.objects.all()
     speaker_section = Section.objects.get(pk=3)
-    feedback_section = Section.objects.get(pk=1)
+    live_section = Section.objects.get(pk=1)
     ctx = {'feedback_form': feedback_form, 'signup_form': signup_form, 'news': news, 'speakers': speakers,
-           'speaker_section': speaker_section, 'feedback_section': feedback_section}
+           'speaker_section': speaker_section, 'live_section': live_section}
     return render(request, 'home/index.html', ctx)

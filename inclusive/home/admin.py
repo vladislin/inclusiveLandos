@@ -25,21 +25,21 @@ class SectionAdmin(admin.ModelAdmin):
 admin.site.register(Section, SectionAdmin)
 
 
-class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ['username', 'description']
-
-    class Meta:
-        model = Feedback
-
-
-admin.site.register(Feedback, FeedbackAdmin)
-
-
-class RecipientAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email']
+# class FeedbackAdmin(admin.ModelAdmin):
+#     list_display = ['username', 'description']
+#
+#     class Meta:
+#         model = Feedback
+#
+#
+# admin.site.register(Feedback, FeedbackAdmin)
 
 
-admin.site.register(Recipient, RecipientAdmin)
+# class RecipientAdmin(admin.ModelAdmin):
+#     list_display = ['name', 'email']
+#
+#
+# admin.site.register(Recipient, RecipientAdmin)
 
 # class SingupAdmin(admin.ModelAdmin):
 #     list_display = ['name', 'surname', 'phone', 'email', 'description']
